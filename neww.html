@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExploreTravel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header, nav, section, article, footer {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        .trips {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .trip-button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .trip-button:hover {
+            opacity: 0.8;
+        }
+        .auth-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .auth-button {
+            display: inline-block;
+            background-color: #5cb85c;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .login-button {
+            background-color: #007bff;
+        }
+        .auth-button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to ExploreTravel</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#trips">Trips</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+        <h2>ExploreTravel - Your Ultimate Travel Guide</h2>
+        <p>Start your journey with us today!</p>
+    </section>
+    
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <article>
+            <img src="https://cdn.britannica.com/37/189837-050-F0AF383E/New-Delhi-India-War-Memorial-arch-Sir.jpg" alt="Image 1">
+            <img src="https://s7ap1.scene7.com/is/image/incredibleindia/2-mehrangarh-fort-jodhpur-rajasthan-city-hero" alt="Image 2">
+            <img src="" aLt="Image 3">
+        </article>
+    </section>
+    
+    <section id="trips" class="trips">
+        <h2>Plan Your Trip</h2>
+        <a href="delhitrail.html" class="trip-button">Delhi</a>
+        <a href="rajasthan.html" class="trip-button">Rajasthan</a>
+        <a href="mumbai.html" class="trip-button">Mumbai</a>
+        <a href="kullumanali.html" class="trip-button">Kullu Manali</a>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <ul>
+            <li>Email: <a href="mailto:exploretravel3542@gmail.com">exploretravel3542@gmail.com</a></li>
+            <li>Phone: (123) 456-7890</li>
+        </ul>
+    </section>
+
+    <div class="auth-container">
+        <a href="signup.html" class="auth-button">Sign Up</a>
+        <a href="login.html" class="auth-button login-button">Login</a>
+    </div>
+</body>
+</html>

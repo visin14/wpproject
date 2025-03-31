@@ -1,0 +1,2 @@
+MONGO_URI=mongodb+srv://atharv:Atharv%40505@cluster0.bkryptu.mongodb.net/tourism_db?retryWrites=true&w=majority
+PORT=5000

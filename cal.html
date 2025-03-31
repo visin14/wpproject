@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Cost Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Cost Calculator</h1>
+        <form id="costForm">
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <select id="destination" required>
+                    <option value="">Select Destination</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Kullu Manali">Kullu Manali</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="days">Number of Days</label>
+                <input type="number" id="days" min="1" value="5">
+            </div>
+            <div class="form-group">
+                <label for="people">Number of People</label>
+                <input type="number" id="people" min="1" value="2">
+            </div>
+            <div class="form-group">
+                <label for="hotel">Hotel Class</label>
+                <select id="hotel">
+                    <option value="1">Budget</option>
+                    <option value="2">Economy</option>
+                    <option value="3" selected>Standard</option>
+                    <option value="4">Deluxe</option>
+                    <option value="5">Luxury</option>
+                </select>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="flights" checked>
+                <label for="flights">Include Flights</label>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="meals" checked>
+                <label for="meals">Include Meals</label>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="sightseeing" checked>
+                <label for="sightseeing">Include Sightseeing</label>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="transport" checked>
+                <label for="transport">Include Local Transport</label>
+            </div>
+            <button type="button" onclick="calculateCost()">Calculate Cost</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        function calculateCost() {
+            const destination = document.getElementById("destination").value;
+            const days = parseInt(document.getElementById("days").value);
+            const people = parseInt(document.getElementById("people").value);
+            const hotelClass = document.getElementById("hotel").value;
+            const includeFlights = document.getElementById("flights").checked;
+            const includeMeals = document.getElementById("meals").checked;
+            const includeSightseeing = document.getElementById("sightseeing").checked;
+            const includeTransport = document.getElementById("transport").checked;
+            
+            const baseCosts = {
+                "Mumbai": 2500,
+                "Rajasthan": 3000,
+                "Delhi": 2000,
+                "Kullu Manali": 3500
+            };
+            
+            if (!destination) {
+                alert("Please select a destination.");
+                return;
+            }
+            
+            const baseCostPerDay = baseCosts[destination];
+            const hotelMultipliers = { "1": 0.5, "2": 0.8, "3": 1.0, "4": 1.5, "5": 2.5 };
+            const accommodationCost = baseCostPerDay * hotelMultipliers[hotelClass] * days * people;
+            const flightCost = includeFlights ? 5000 * people : 0;
+            const mealsCost = includeMeals ? 1000 * days * people : 0;
+            const sightseeingCost = includeSightseeing ? 1200 * days : 0;
+            const transportCost = includeTransport ? 800 * days : 0;
+            const totalCost = accommodationCost + flightCost + mealsCost + sightseeingCost + transportCost;
+            
+            document.getElementById("result").innerHTML = `
+                <h2>Total Estimated Cost: ₹${totalCost.toLocaleString()}</h2>
+                <p><strong>Breakdown:</strong></p>
+                <p>Accommodation: ₹${accommodationCost.toLocaleString()}</p>
+                <p>Flights: ₹${flightCost.toLocaleString()}</p>
+                <p>Meals: ₹${mealsCost.toLocaleString()}</p>
+                <p>Sightseeing: ₹${sightseeingCost.toLocaleString()}</p>
+                <p>Transport: ₹${transportCost.toLocaleString()}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
